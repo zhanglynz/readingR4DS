@@ -111,7 +111,19 @@ This is only for my own study.
 
 # Workflow: code style
 
+1. "Using a consistent style makes it easier for others (including future-you!) to read your work and is particularly important if you need to get help from someone else." [future you]
 
+1. "As a general rule of thumb, it's better to prefer long, descriptive names that are easy to understand rather than concise names that are fast to type." [descriptive names]
+
+1. "if you have a bunch of variables that are a variation on a theme, you're better off giving them a common prefix rather than a common suffix" [common prefix]
+
+1. "Pipe sign should always have a space before it and should typically be the last thing on a line." [pipe]
+
+1. "be wary of writing very long pipes, say longer than 10-15 lines. Try to break them up into smaller sub-tasks, giving each task an informative name." [break long pipes]
+
+1. "create these headers (Cmd/Ctrl + Shift + R)" [headers]
+
+# Data tidying
 
 
 
