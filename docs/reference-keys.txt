@@ -2,3 +2,5 @@ welcome
 introduction
 data-visualization
 workflow-basics
+data-transformation
+workflow-code-style

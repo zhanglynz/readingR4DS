@@ -83,7 +83,35 @@ This is only for my own study.
 
 1. R is case sensitive.
 
+# Data transformation
 
+1. "If you want to use the base version of these functions after loading dplyr, you'll need to use their full names: stats::filter() and stats::lag()." [full name of a function: pkgname::func_name]
+
+1. "when we need to be precise about which package a function comes from, we'll use the same syntax as R: packagename::functionname()."
+
+1. "The easiest way to pronounce the pipe is 'then'." [pipe]
+
+1. dplyr verbs for rows: filter; arrange; distinct; count
+
+1. dplyr verbs for columns: mutate; select; rename; relocate
+
+1. "You can rename variables as you select() them by using =. The new name appears on the left hand side of the =, and the old variable appears on the right hand side"
+
+1. "If you have a bunch of inconsistently named columns and it would be painful to fix them all by hand, check out janitor::clean_names() which provides some useful automated cleaning." [janitor::clean_names()]
+
+1. keyboard shortcut Ctrl/Cmd + Shift + M for %>% or |>
+
+1. The slice_ functions:
+
+    - df |> slice_head(n = 1) takes the first row from each group.
+    - df |> slice_tail(n = 1) takes the last row in each group.
+    - df |> slice_min(x, n = 1) takes the row with the smallest value of column x.
+    - df |> slice_max(x, n = 1) takes the row with the largest value of column x.
+    - df |> slice_sample(n = 1) takes one random row.
+    
+1. "Whenever you do any aggregation, it’s always a good idea to include a count (n()). That way, you can ensure that you're not drawing conclusions based on very small amounts of data." [show the sample size] 
+
+# Workflow: code style
 
 
 
