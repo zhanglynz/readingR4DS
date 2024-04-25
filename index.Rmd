@@ -67,6 +67,24 @@ This is only for my own study.
 
 1. "Once you've made a plot, you might want to get it out of R by saving it as an image that you can use elsewhere. That’s the job of `ggsave()`"
 
+# Workflow: basics
+
+1. "You will make lots of assignments, and <- is a pain to type. You can save time with RStudio's keyboard shortcut: Alt + - (the minus sign)." [shortcut for <-]
+
+1. "R will ignore any text after # for that line." [comment]
+
+1. "Use comments to explain the why of your code, not the how or the what." [explain why in comment]
+
+1. "For data analysis code, use comments to explain your overall plan of attack and record important insights as you encounter them." [plan and insights in comment]
+
+1. "Object names must start with a letter and can only contain letters, numbers, _, and .." [object name]
+
+1. "You want your object names to be descriptive, so you'll need to adopt a convention for multiple words. We recommend snake_case, where you separate lowercase words with _." [snake case]
+
+1. R is case sensitive.
+
+
+
 
 
 
