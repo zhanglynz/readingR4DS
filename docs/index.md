@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "Reading Notes on R4DS"
 author: "Lingyun Zhang"
-date: "2024-04-25"
+date: "2024-04-30"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -124,6 +124,56 @@ This is only for my own study.
 1. "create these headers (Cmd/Ctrl + Shift + R)" [headers]
 
 # Data tidying
+
+1. "most built-in R functions work with vectors of values. That makes transforming tidy data feel particularly natural." [vectors]
+
+1. "tidyr provides two functions for pivoting data: pivot_longer() and pivot_wider()." [pivot_longer; pivot_wider]
+
+1. "A more challenging situation occurs when you have multiple pieces of information crammed into the column names, and you would like to store these in separate new variables." [multiple pieces of information in a column name]
+
+1. "The examples we presented here are a selection of those from vignette("pivot", package = "tidyr"), so if you encounter a problem that this chapter doesn’t help you with, that vignette is a good place to try next." [vignette("pivot", package = "tidyr")]     
+
+**Example:**
+
+
+```r
+library(tidyverse)
+ 
+tbl <-
+  tribble(
+    ~id, ~x_1, ~y_2,
+    "a", 1,   2,
+    "b", 3,   4,
+    'c', 5,   6)
+new_tbl <-
+  tbl %>%
+  pivot_longer(
+    cols = x_1:y_2,
+    names_to = c("name", "number"),
+    names_sep = "_",
+    values_to = "value"
+  )
+new_tbl
+```
+
+```
+## # A tibble: 6 x 4
+##   id    name  number value
+##   <chr> <chr> <chr>  <dbl>
+## 1 a     x     1          1
+## 2 a     y     2          2
+## 3 b     x     1          3
+## 4 b     y     2          4
+## 5 c     x     1          5
+## 6 c     y     2          6
+```
+
+
+ 
+
+# Workflow: scripts and projects
+
+
 
 
 

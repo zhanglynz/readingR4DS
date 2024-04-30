@@ -127,6 +127,43 @@ This is only for my own study.
 
 # Data tidying
 
+1. "most built-in R functions work with vectors of values. That makes transforming tidy data feel particularly natural." [vectors]
+
+1. "tidyr provides two functions for pivoting data: pivot_longer() and pivot_wider()." [pivot_longer; pivot_wider]
+
+1. "A more challenging situation occurs when you have multiple pieces of information crammed into the column names, and you would like to store these in separate new variables." [multiple pieces of information in a column name]
+
+1. "The examples we presented here are a selection of those from vignette("pivot", package = "tidyr"), so if you encounter a problem that this chapter doesn’t help you with, that vignette is a good place to try next." [vignette("pivot", package = "tidyr")]     
+
+**Example:**
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+ 
+tbl <-
+  tribble(
+    ~id, ~x_1, ~y_2,
+    "a", 1,   2,
+    "b", 3,   4,
+    'c', 5,   6)
+new_tbl <-
+  tbl %>%
+  pivot_longer(
+    cols = x_1:y_2,
+    names_to = c("name", "number"),
+    names_sep = "_",
+    values_to = "value"
+  )
+new_tbl
+```
+
+
+ 
+
+# Workflow: scripts and projects
+
+
+
 
 
 
