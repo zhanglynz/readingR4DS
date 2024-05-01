@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-04-30" />
+<meta name="date" content="2024-05-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="data-tidying.html"/>
-
+<link rel="next" href="data-import.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -141,6 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="workflow-code-style.html"><a href="workflow-code-style.html"><i class="fa fa-check"></i><b>6</b> Workflow: code style</a></li>
 <li class="chapter" data-level="7" data-path="data-tidying.html"><a href="data-tidying.html"><i class="fa fa-check"></i><b>7</b> Data tidying</a></li>
 <li class="chapter" data-level="8" data-path="workflow-scripts-and-projects.html"><a href="workflow-scripts-and-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: scripts and projects</a></li>
+<li class="chapter" data-level="9" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>9</b> Data import</a></li>
 </ul>
 
       </nav>
@@ -160,15 +161,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="workflow-scripts-and-projects" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">8</span> Workflow: scripts and projects<a href="workflow-scripts-and-projects.html#workflow-scripts-and-projects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<ol style="list-style-type: decimal">
+<li><p>“If you’re using RStudio server, your R session is never restarted by default.” “This makes it even more important to regularly restart R so that you’re starting with a clean slate.” [restart R]</p></li>
+<li><p>“Keeping all the files associated with a given project (input data, R scripts, analytical results, and figures) together in one directory is such a wise and common practice that RStudio has built-in support for
+this via projects.” [project]</p></li>
+<li><p>“You should never use absolute paths in your scripts, because they hinder sharing: no one else will have exactly the same directory configuration as you.” [relative paths]</p></li>
+<li><p>“we recommend always using the Linux/Mac style with forward slashes in paths.” [forward slashes]</p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-tidying.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="data-tidying.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

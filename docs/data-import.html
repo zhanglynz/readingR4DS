@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Data visualization | Reading Notes on R4DS</title>
-  <meta name="description" content="3 Data visualization | Reading Notes on R4DS" />
+  <title>9 Data import | Reading Notes on R4DS</title>
+  <meta name="description" content="9 Data import | Reading Notes on R4DS" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Data visualization | Reading Notes on R4DS" />
+  <meta property="og:title" content="9 Data import | Reading Notes on R4DS" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Data visualization | Reading Notes on R4DS" />
+  <meta name="twitter:title" content="9 Data import | Reading Notes on R4DS" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="workflow-basics.html"/>
+<link rel="prev" href="workflow-scripts-and-projects.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -159,23 +159,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-visualization" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Data visualization<a href="data-visualization.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-import" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Data import<a href="data-import.html#data-import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ol style="list-style-type: decimal">
-<li><p>“ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs.” [grammar of graphics]</p></li>
-<li><p>“aesthetic mappings and geometric objects – the fundamental building blocks of ggplot2” [aes; geo]</p></li>
-<li><p>“ggthemes package, which offers a colorblind safe color palette.” [ggthemes; colorblind safe]</p></li>
-<li><p>[A population is a (tidy) table, where each row is for an item/unit/element and each column is an attribute of the items/units/elements.]</p></li>
-<li><p>“Once you’ve made a plot, you might want to get it out of R by saving it as an image that you can use elsewhere. That’s the job of <code>ggsave()</code>”</p></li>
+<li><p>“CSV, which is short for comma-separated values” [csv]</p></li>
+<li><p>“By default, read_csv() only recognizes empty strings (”“) in this dataset as NAs” [“” is default for NA]</p></li>
+<li><p>“janitor::clean_names() to use some heuristics to turn them all into snake case at once” [janitor::clean_names(); snake case]</p></li>
 </ol>
+<p>up to 7.3.2</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="workflow-scripts-and-projects.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

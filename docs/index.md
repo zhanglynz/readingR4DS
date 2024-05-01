@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "Reading Notes on R4DS"
 author: "Lingyun Zhang"
-date: "2024-04-30"
+date: "2024-05-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -169,11 +169,26 @@ new_tbl
 ```
 
 
- 
-
 # Workflow: scripts and projects
 
+1. "If you’re using RStudio server, your R session is never restarted by default." "This makes it even more important to regularly restart R so that you’re starting with a clean slate." [restart R]
 
+1. "Keeping all the files associated with a given project (input data, R scripts, analytical results, and figures) together in one directory is such a wise and common practice that RStudio has built-in support for 
+	this via projects." [project]   
+
+1. "You should never use absolute paths in your scripts, because they hinder sharing: no one else will have exactly the same directory configuration as you."	[relative paths]
+
+1. "we recommend always using the Linux/Mac style with forward slashes in paths." [forward slashes]
+
+#  Data import
+
+1. "CSV, which is short for comma-separated values"	[csv]
+
+1. "By default, read_csv() only recognizes empty strings ("") in this dataset as NAs" ["" is default for NA]
+
+1. "janitor::clean_names() to use some heuristics to turn them all into snake case at once" [janitor::clean_names(); snake case]
+	
+up to 7.3.2	
 
 
 
