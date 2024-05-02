@@ -177,10 +177,13 @@ new_tbl
 
 1. "janitor::clean_names() to use some heuristics to turn them all into snake case at once" [janitor::clean_names(); snake case]
 	
-up to 7.3.2	
+1. a useful function `base::list.files()`
 
+# Visualize
 
+ggplot2 extensions gallery https://exts.ggplot2.tidyverse.org/gallery/. This site lists many of the packages that extend ggplot2 with new geoms and scales. It's a great place to start if you're trying to do something that seems hard with ggplot2
 
+# Layers
 
 
 
