@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-05-02" />
+<meta name="date" content="2024-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="visualize.html"/>
-
+<link rel="next" href="exploratory-data-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,7 +143,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="workflow-scripts-and-projects.html"><a href="workflow-scripts-and-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: scripts and projects</a></li>
 <li class="chapter" data-level="9" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>9</b> Data import</a></li>
 <li class="chapter" data-level="10" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>10</b> Visualize</a></li>
-<li class="chapter" data-level="11" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i><b>11</b> Layers</a></li>
+<li class="chapter" data-level="11" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i><b>11</b> Layers</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="layers.html"><a href="layers.html#an-example"><i class="fa fa-check"></i><b>11.1</b> An Example</a></li>
+<li class="chapter" data-level="11.2" data-path="layers.html"><a href="layers.html#exercise"><i class="fa fa-check"></i><b>11.2</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>12</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-fct_reorder"><i class="fa fa-check"></i><b>12.1</b> Example of using <code>fct_reorder</code></a></li>
+<li class="chapter" data-level="12.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#plot-two-categorical-variables"><i class="fa fa-check"></i><b>12.2</b> Plot two categorical variables</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-geom_count"><i class="fa fa-check"></i><b>12.2.1</b> Example of using <code>geom_count()</code></a></li>
+<li class="chapter" data-level="12.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-geom_tile"><i class="fa fa-check"></i><b>12.2.2</b> Example of using <code>geom_tile()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a></li>
 </ul>
 
       </nav>
@@ -163,15 +177,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="layers" class="section level1 hasAnchor" number="11">
 <h1><span class="header-section-number">11</span> Layers<a href="layers.html#layers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<ol style="list-style-type: decimal">
+<li><p>“You can learn more about all possible aesthetic mappings in the aesthetic specifications vignette at
+<a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a>.” [aesthetic specifications]</p></li>
+<li><p>“Every geom function in ggplot2 takes a mapping argument, either defined locally in the geom layer or globally in the ggplot() layer.” [global or local mapping for geom]</p></li>
+<li><p>“ggplot2 will draw a separate object for each unique value of the grouping variable. In practice, ggplot2 will automatically group the data for these geoms whenever you map an aesthetic to a discrete variable (as in the linetype example). It is convenient to rely on this feature
+because the group aesthetic by itself does not add a legend or distinguishing features to the geoms.” [separate geometric objects]</p></li>
+<li><p>“If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings for that layer only.
+This makes it possible to display different aesthetics in different layers.” [local mapping]
+“You can use the same idea to specify different data for each layer.” [local data]</p></li>
+<li><p>“the ggridges package (<a href="https://wilkelab.org/ggridges" class="uri">https://wilkelab.org/ggridges</a>) is useful for making ridgeline plots, which can be useful for visualizing the density of a numerical variable for different levels of a categorical variable.” [ggridges package]</p></li>
+<li><p>“The best place to get a comprehensive overview of all of the geoms ggplot2 offers, as well as all functions in the package, is the reference page:
+<a href="https://ggplot2.tidyverse.org/reference" class="uri">https://ggplot2.tidyverse.org/reference</a>.”</p></li>
+<li><p>“The first argument of facet_grid() is also a formula, but now it’s a double sided formula: rows ~ cols.” [facet_grid()]</p></li>
+<li><p>“By default each of the facets share the same scale and range for x and y axes.” “Setting the scales argument in a faceting function to”free” will allow for different axis scales across
+both rows and columns, “free_x” will allow for different scales across rows, and “free_y” will allow for
+different scales across columns.” [<code>facet_grid(drv ~ cyl, scales = "free_y")</code>]</p></li>
+<li><p>“You can avoid this gridding by setting the position adjustment to “jitter”. position = “jitter” adds a small amount of random noise to each point.” [<code>geom_point(position = "jitter")</code>]
+“Because this is such a useful operation, ggplot2 comes with
+a shorthand for geom_point(position =”jitter”): geom_jitter().” [<code>geom_jitter()</code>]</p></li>
+<li><p><code>coord_flip()</code></p></li>
+</ol>
+<div id="an-example" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> An Example<a href="layers.html#an-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="layers.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="layers.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="layers.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="layers.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="layers.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-6"><a href="layers.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> mpg  <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&quot;2seater&quot;</span>), </span>
+<span id="cb3-7"><a href="layers.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb3-8"><a href="layers.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="layers.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-10"><a href="layers.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> mpg  <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&quot;2seater&quot;</span>), </span>
+<span id="cb3-11"><a href="layers.html#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">&quot;circle open&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb3-12"><a href="layers.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="exercise" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Exercise<a href="layers.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="layers.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="layers.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-3"><a href="layers.html#cb4-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-4"><a href="layers.html#cb4-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span></span>
+<span id="cb4-5"><a href="layers.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="layers.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="layers.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-8"><a href="layers.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-9"><a href="layers.html#cb4-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-10"><a href="layers.html#cb4-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span></span>
+<span id="cb4-11"><a href="layers.html#cb4-11" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="layers.html#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="layers.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-14"><a href="layers.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group =</span> drv), <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-15"><a href="layers.html#cb4-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-16"><a href="layers.html#cb4-16" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span></span>
+<span id="cb4-17"><a href="layers.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="layers.html#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="layers.html#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-20"><a href="layers.html#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-21"><a href="layers.html#cb4-21" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-22"><a href="layers.html#cb4-22" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span></span>
+<span id="cb4-23"><a href="layers.html#cb4-23" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="layers.html#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="layers.html#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-26"><a href="layers.html#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-27"><a href="layers.html#cb4-27" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-28"><a href="layers.html#cb4-28" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span></span>
+<span id="cb4-29"><a href="layers.html#cb4-29" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-30"><a href="layers.html#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="layers.html#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-32"><a href="layers.html#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> drv), <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-33"><a href="layers.html#cb4-33" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-34"><a href="layers.html#cb4-34" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span></span>
+<span id="cb4-35"><a href="layers.html#cb4-35" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-36"><a href="layers.html#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-37"><a href="layers.html#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb4-38"><a href="layers.html#cb4-38" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-39"><a href="layers.html#cb4-39" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">|</span> p2) <span class="sc">/</span> (p3 <span class="sc">|</span> p4) <span class="sc">/</span> (p5 <span class="sc">|</span> p6)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="visualize.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="visualize.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exploratory-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

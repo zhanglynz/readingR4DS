@@ -9,3 +9,11 @@ workflow-scripts-and-projects
 data-import
 visualize
 layers
+an-example
+exercise
+exploratory-data-analysis
+example-of-using-fct_reorder
+plot-two-categorical-variables
+example-of-using-geom_count
+example-of-using-geom_tile
+communication
