@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-05-04" />
+<meta name="date" content="2024-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,7 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-geom_tile"><i class="fa fa-check"></i><b>12.2.2</b> Example of using <code>geom_tile()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a></li>
+<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="communication.html"><a href="communication.html#examples"><i class="fa fa-check"></i><b>13.1</b> Examples</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -201,8 +204,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="example-of-using-geom_tile" class="section level3 hasAnchor" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Example of using <code>geom_tile()</code><a href="exploratory-data-analysis.html#example-of-using-geom_tile" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exploratory-data-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="exploratory-data-analysis.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(color, cut) <span class="sc">|&gt;</span>  </span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exploratory-data-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="exploratory-data-analysis.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(color, cut) <span class="sc">%&gt;%</span>  </span>
 <span id="cb7-3"><a href="exploratory-data-analysis.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> color, <span class="at">y =</span> cut)) <span class="sc">+</span></span>
 <span id="cb7-4"><a href="exploratory-data-analysis.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>

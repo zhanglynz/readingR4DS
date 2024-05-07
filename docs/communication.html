@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-05-04" />
+<meta name="date" content="2024-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,7 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-geom_tile"><i class="fa fa-check"></i><b>12.2.2</b> Example of using <code>geom_tile()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a></li>
+<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="communication.html"><a href="communication.html#examples"><i class="fa fa-check"></i><b>13.1</b> Examples</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -177,7 +180,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="communication" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">13</span> Communication<a href="communication.html#communication" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li><p>“you will need to invest considerable effort in making your plots as self-explanatory as possible.” [self-explanatory]</p></li>
+<li><p>Three useful packages for creating graphs: sacales; ggrepel; patchwork</p></li>
+<li><p>“The easiest place to start when turning an exploratory graphic into an expository graphic is with good labels. You add labels with the labs() function.” [<code>labs()</code>]</p></li>
+<li><p>“The purpose of a plot title is to summarize the main finding. Avoid titles that just describe what the plot is, e.g., ‘A scatterplot of engine displacement vs. fuel economy’.” [plot title]</p></li>
+<li><p>“If you need to add more text, there are two other useful labels: subtitle adds additional detail in a smaller font beneath the title and caption adds text at the bottom right of the plot, often used to describe the source of the data.” [subtitle; caption]</p></li>
+<li><p>“geom_text() is similar to geom_point(), but it has an additional aesthetic: label. This makes it possible to add textual labels to your plots.” “fontface and size arguments we can customize the look of the text labels.” [<code>geom_text()</code>]</p></li>
+<li><p>“Use geom_hline() and geom_vline() to add reference lines. We often make them thick (linewidth = 2) and white (color = white), and draw them underneath the primary data layer.” [<code>geom_hline()</code>; <code>geom_vline()</code>]</p></li>
+<li><p>“Use geom_rect() to draw a rectangle around points of interest. The boundaries of the rectangle are defined by aesthetics xmin, xmax, ymin, ymax.” [<code>geom_rect()</code>]</p></li>
+<li><p>“Use geom_segment() with the arrow argument to draw attention to a point with an arrow. Use aesthetics x and y to define the starting location, and xend and yend to define the end location.” [<code>geom_segment()</code>]</p></li>
+<li><p>“Another handy function for adding annotations to plots is annotate(). As a rule of thumb, geoms are generally useful for highlighting a subset of the data while annotate() is useful for adding one or few annotation elements to a plot.” [<code>annotate()</code>]</p></li>
+</ol>
+<p>up to 11.4 Scales</p>
+<div id="examples" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Examples<a href="communication.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Example 1: showing outliers</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="communication.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="communication.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb8-3"><a href="communication.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="communication.html#cb8-4" aria-hidden="true" tabindex="-1"></a>potential_outliers <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="communication.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">40</span> <span class="sc">|</span> (hwy <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> displ <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
+<span id="cb8-6"><a href="communication.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-7"><a href="communication.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="communication.html#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href="communication.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> potential_outliers, <span class="fu">aes</span>(<span class="at">label =</span> model)) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="communication.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> potential_outliers, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="communication.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb8-12"><a href="communication.html#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> potential_outliers,</span>
+<span id="cb8-13"><a href="communication.html#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="st">&quot;circle open&quot;</span></span>
+<span id="cb8-14"><a href="communication.html#cb8-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><strong>Example 2: using annotate()</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="communication.html#cb9-1" aria-hidden="true" tabindex="-1"></a>trend_text <span class="ot">&lt;-</span> <span class="st">&quot;Larger engine sizes tend to have lower fuel economy.&quot;</span> <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="communication.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_wrap</span>(<span class="at">width =</span> <span class="dv">30</span>)</span>
+<span id="cb9-3"><a href="communication.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="communication.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="communication.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a href="communication.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb9-7"><a href="communication.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;label&quot;</span>, <span class="at">x =</span> <span class="fl">3.5</span>, <span class="at">y =</span> <span class="dv">38</span>,</span>
+<span id="cb9-8"><a href="communication.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> trend_text,</span>
+<span id="cb9-9"><a href="communication.html#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb9-10"><a href="communication.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="communication.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb9-12"><a href="communication.html#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;segment&quot;</span>,</span>
+<span id="cb9-13"><a href="communication.html#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">35</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">yend =</span> <span class="dv">25</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb9-14"><a href="communication.html#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">&quot;closed&quot;</span>)</span>
+<span id="cb9-15"><a href="communication.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 
+</div>
 </div>
             </section>
 

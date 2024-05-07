@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-05-04" />
+<meta name="date" content="2024-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,7 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#example-of-using-geom_tile"><i class="fa fa-check"></i><b>12.2.2</b> Example of using <code>geom_tile()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a></li>
+<li class="chapter" data-level="13" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>13</b> Communication</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="communication.html"><a href="communication.html#examples"><i class="fa fa-check"></i><b>13.1</b> Examples</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -185,14 +188,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>dplyr verbs for columns: mutate; select; rename; relocate</p></li>
 <li><p>“You can rename variables as you select() them by using =. The new name appears on the left hand side of the =, and the old variable appears on the right hand side”</p></li>
 <li><p>“If you have a bunch of inconsistently named columns and it would be painful to fix them all by hand, check out janitor::clean_names() which provides some useful automated cleaning.” [janitor::clean_names()]</p></li>
-<li><p>keyboard shortcut Ctrl/Cmd + Shift + M for %&gt;% or |&gt;</p></li>
+<li><p>keyboard shortcut Ctrl/Cmd + Shift + M for %&gt;% or %&gt;%</p></li>
 <li><p>The slice_ functions:</p>
 <ul>
-<li>df |&gt; slice_head(n = 1) takes the first row from each group.</li>
-<li>df |&gt; slice_tail(n = 1) takes the last row in each group.</li>
-<li>df |&gt; slice_min(x, n = 1) takes the row with the smallest value of column x.</li>
-<li>df |&gt; slice_max(x, n = 1) takes the row with the largest value of column x.</li>
-<li>df |&gt; slice_sample(n = 1) takes one random row.</li>
+<li>df %&gt;% slice_head(n = 1) takes the first row from each group.</li>
+<li>df %&gt;% slice_tail(n = 1) takes the last row in each group.</li>
+<li>df %&gt;% slice_min(x, n = 1) takes the row with the smallest value of column x.</li>
+<li>df %&gt;% slice_max(x, n = 1) takes the row with the largest value of column x.</li>
+<li>df %&gt;% slice_sample(n = 1) takes one random row.</li>
 </ul></li>
 <li><p>“Whenever you do any aggregation, it’s always a good idea to include a count (n()). That way, you can ensure that you’re not drawing conclusions based on very small amounts of data.” [show the sample size]</p></li>
 </ol>

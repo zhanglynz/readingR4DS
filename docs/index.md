@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "Reading Notes on R4DS"
 author: "Lingyun Zhang"
-date: "2024-05-04"
+date: "2024-05-07"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -97,15 +97,15 @@ This is only for my own study.
 
 1. "If you have a bunch of inconsistently named columns and it would be painful to fix them all by hand, check out janitor::clean_names() which provides some useful automated cleaning." [janitor::clean_names()]
 
-1. keyboard shortcut Ctrl/Cmd + Shift + M for %>% or |>
+1. keyboard shortcut Ctrl/Cmd + Shift + M for %>% or %>%
 
 1. The slice_ functions:
 
-    - df |> slice_head(n = 1) takes the first row from each group.
-    - df |> slice_tail(n = 1) takes the last row in each group.
-    - df |> slice_min(x, n = 1) takes the row with the smallest value of column x.
-    - df |> slice_max(x, n = 1) takes the row with the largest value of column x.
-    - df |> slice_sample(n = 1) takes one random row.
+    - df %>% slice_head(n = 1) takes the first row from each group.
+    - df %>% slice_tail(n = 1) takes the last row in each group.
+    - df %>% slice_min(x, n = 1) takes the row with the smallest value of column x.
+    - df %>% slice_max(x, n = 1) takes the row with the largest value of column x.
+    - df %>% slice_sample(n = 1) takes one random row.
     
 1. "Whenever you do any aggregation, it’s always a good idea to include a count (n()). That way, you can ensure that you're not drawing conclusions based on very small amounts of data." [show the sample size] 
 
@@ -331,8 +331,8 @@ ggplot(diamonds, aes(x = cut, y = color)) +
 
 
 ```r
-diamonds |> 
-  count(color, cut) |>  
+diamonds %>% 
+  count(color, cut) %>%  
   ggplot(aes(x = color, y = cut)) +
   geom_tile(aes(fill = n))
 ```
@@ -340,3 +340,73 @@ diamonds |>
 <img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 # Communication
+
+1. "you will need to invest considerable effort in making your plots as self-explanatory as possible." [self-explanatory]
+
+1. Three useful packages for creating graphs: sacales; ggrepel; patchwork
+
+1. "The easiest place to start when turning an exploratory graphic into an expository graphic is with good labels. You add labels with the labs() function." [`labs()`]
+
+1. "The purpose of a plot title is to summarize the main finding. Avoid titles that just describe what the plot is, e.g., 'A scatterplot of engine displacement vs. fuel economy'." [plot title]
+
+1. "If you need to add more text, there are two other useful labels: subtitle adds additional detail in a smaller font beneath the title and caption adds text at the bottom right of the plot, often used to describe the source of the data." [subtitle; caption]
+
+1. "geom_text() is similar to geom_point(), but it has an additional aesthetic: label. This makes it possible to add textual labels to your plots." "fontface and size arguments we can customize the look of the text labels." [`geom_text()`]
+
+1. "Use geom_hline() and geom_vline() to add reference lines. We often make them thick (linewidth = 2) and white (color = white), and draw them underneath the primary data layer." [`geom_hline()`; `geom_vline()`]
+
+1. "Use geom_rect() to draw a rectangle around points of interest. The boundaries of the rectangle are defined by aesthetics xmin, xmax, ymin, ymax." [`geom_rect()`]
+
+1. "Use geom_segment() with the arrow argument to draw attention to a point with an arrow. Use aesthetics x and y to define the starting location, and xend and yend to define the end location." [`geom_segment()`]
+
+1. "Another handy function for adding annotations to plots is annotate(). As a rule of thumb, geoms are generally useful for highlighting a subset of the data while annotate() is useful for adding one or few annotation elements to a plot." [`annotate()`]
+
+up to 11.4 Scales
+
+## Examples
+
+**Example 1: showing outliers**
+
+
+```r
+library(tidyverse)
+library(ggrepel)
+
+potential_outliers <- mpg %>%
+  filter(hwy > 40 | (hwy > 20 & displ > 5))
+  
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_text_repel(data = potential_outliers, aes(label = model)) +
+  geom_point(data = potential_outliers, color = "red") +
+  geom_point(
+    data = potential_outliers,
+    color = "red", size = 3, shape = "circle open"
+  )
+```
+
+<img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+**Example 2: using annotate()**
+
+
+```r
+trend_text <- "Larger engine sizes tend to have lower fuel economy." |>
+  str_wrap(width = 30)
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  annotate(
+    geom = "label", x = 3.5, y = 38,
+    label = trend_text,
+    hjust = "left", color = "red"
+  ) +
+  annotate(
+    geom = "segment",
+    x = 3, y = 35, xend = 5, yend = 25, color = "red",
+    arrow = arrow(type = "closed")
+  )
+```
+
+<img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+

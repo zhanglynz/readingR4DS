@@ -17,3 +17,4 @@ plot-two-categorical-variables
 example-of-using-geom_count
 example-of-using-geom_tile
 communication
+examples
